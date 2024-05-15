@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="reqres-regression-suite" verbose="1">
+    <test name="Api Tests">
+        <packages>
+            <package name="com.reqres.demo"/>
+        </packages>
+    </test>
+</suite>
+
