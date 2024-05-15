@@ -3,7 +3,7 @@
 <suite name="reqres-regression-suite" verbose="1">
     <test name="Api Tests">
         <packages>
-            <package name="com.reqres.demo"/>
+            <package name="com.reqres.demo.getexample"/>
         </packages>
     </test>
 </suite>
