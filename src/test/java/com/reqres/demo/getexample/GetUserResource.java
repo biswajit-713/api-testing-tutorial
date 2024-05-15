@@ -2,7 +2,16 @@ package com.reqres.demo.getexample;
 
 import org.testng.annotations.Test;
 
-public class GetResource {
+import static io.restassured.RestAssured.given;
+
+@Test
+public class GetUserResource {
     @Test
-    public void shouldListAllUsers
+    public void shouldListAllUsersFromSpecifiedPageInPagination() {
+        given()
+                .when()
+                .get("https://reqres.in/api/users?page=2")
+                .then()
+                .statusCode(200);
+    }
 }
