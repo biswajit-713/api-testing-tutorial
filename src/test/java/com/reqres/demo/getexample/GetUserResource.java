@@ -1,9 +1,14 @@
 package com.reqres.demo.getexample;
 
+import database.DatastoreUtils;
 import io.restassured.RestAssured;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import reader.CsvTestDataReader;
+
+import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -16,11 +21,10 @@ public class GetUserResource {
         RestAssured.baseURI = "https://reqres.in/api";
         // in a scenario where you are testing your own system, you may want to create the data during the class setup
         // you may establish a connection to database
-        // you may data from a resource file and insert into database
+        // you may read data from a resource file and insert into database
         // the following example demonstrates how you would read data from a csv from resources folder and
         // insert into database where actual insertion process is faked
-
-
+        DatastoreUtils.loadUsersFrom("/users/users.csv");
     }
 
     @Test
@@ -54,6 +58,10 @@ public class GetUserResource {
                 .body("data.first_name", equalTo("Janet"))
                 .body("data.last_name", equalTo("Weaver"))
                 .body("data.avatar", equalTo("https://reqres.in/img/faces/2-image.jpg"));
+    }
+    @Test
+    public void shouldThrow404WhenUserNotFound() {
+
     }
 
 }
